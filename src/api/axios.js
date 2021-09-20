@@ -1,7 +1,7 @@
 import axios from 'axios'
 import queryString from 'query-string'
 const axiosClient = axios.create({
-    baseURL: 'http://ig-food-menus.herokuapp.com/',
+    baseURL: 'https://ig-food-menus.herokuapp.com/',
     headers: {
         "content-type": "application/json",
       },
