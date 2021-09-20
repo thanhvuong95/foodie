@@ -1,0 +1,23 @@
+@import "../../sass/abstracts/variables";
+.loading {
+  border: 5px solid transparent;
+  border-radius: 50%;
+  border-top: 5px solid $main-color;
+  border-right: 5px solid $main-color;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,27 @@
+.toast {
+  font-size: 1.25rem;
+  &__title {
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+}
+
+.Toastify__toast--success {
+  background-color: #07bc0c !important;
+  color: #fff !important;
+  svg {
+    color: #fff !important;
+    fill: #fff;
+  }
+}
+.Toastify__toast--error {
+  background-color: #e74c3c !important;
+  color: #fff !important;
+  svg {
+    color: #fff !important;
+    fill: #fff;
+  }
+}
+.Toastify__toast-container--top-right {
+  top: 70px !important;
+}

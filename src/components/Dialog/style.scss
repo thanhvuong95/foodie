@@ -1,0 +1,54 @@
+@import "../../sass/abstracts/variables";
+.dialog {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  max-width: 500px;
+  padding: 12px 24px;
+  box-shadow: $box-shadow;
+  background-color: #fff;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  transition: 0.5s ease-in-out;
+  opacity: 0;
+  z-index: 999999;
+  pointer-events: none;
+  &.active {
+    bottom: 50%;
+    transform: translate(-50%, 50%);
+    opacity: 1;
+    pointer-events: visible;
+  }
+  h3 {
+    color: $gray-dark;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    i {
+      font-size: 3rem;
+      margin-right: 12px;
+      color: #33cc66;
+    }
+  }
+  span {
+    color: $gray-light;
+    font-weight: 300;
+  }
+
+  &__button {
+    margin-top: 12px;
+    text-align: right;
+  }
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    z-index: 99999;
+    &.active {
+      display: block;
+    }
+  }
+}

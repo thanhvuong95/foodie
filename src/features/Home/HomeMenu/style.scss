@@ -1,0 +1,13 @@
+@import "../../../sass/abstracts/variables";
+.home-menu {
+  margin: 64px 12px;
+  text-align: center;
+  & > span {
+    color: $main-color;
+    display: inline-block;
+  }
+  h2 {
+    margin: 24px 0;
+    text-transform: capitalize;
+  }
+}

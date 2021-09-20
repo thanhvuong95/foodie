@@ -1,0 +1,15 @@
+@import "../../sass/abstracts/variables";
+.not-found {
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 32px;
+  margin-top: $header-height;
+  h3 {
+    margin: 12px;
+    color: $gray-dark;
+  }
+  img {
+    width: 100%;
+    max-width: 500px;
+  }
+}

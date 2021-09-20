@@ -1,0 +1,198 @@
+@import "../../../sass/abstracts/variables";
+@import "../../../sass/abstracts/mixin";
+.order-content {
+  flex: 1;
+  font-size: 1.5rem;
+  padding: 0 12px;
+  position: relative;
+  &__body {
+    min-height: 80vh;
+  }
+
+  &__slider {
+    margin-bottom: 24px;
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
+    &__item {
+      padding: 12px;
+      text-align: center;
+      border-radius: 12px;
+      transition: all 0.5s linear;
+      &.active {
+        background-color: $main-color;
+        color: #fff;
+      }
+      &:hover {
+        border: 1px solid $main-color;
+      }
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    @include tablet {
+      display: block;
+    }
+    h2 {
+      font-size: 2rem;
+      color: $gray-dark;
+      font-weight: 700;
+      text-transform: capitalize;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    @include tablet {
+      margin-top: 24px;
+    }
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__search {
+    flex: 1;
+    margin-right: 24px;
+    display: none;
+    border-radius: 6px;
+    border: 1px solid #717171;
+    @include tablet {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    @include mobile {
+      padding: 12px 0;
+      margin-right: 0;
+      margin-bottom: 24px;
+    }
+    input {
+      font-size: 1.5rem;
+      border: none;
+      outline: none;
+      display: inline-block;
+      height: 100%;
+      background-color: transparent;
+      padding: 0 12px;
+      flex: 1;
+    }
+    i {
+      font-size: 2rem;
+      padding: 0 12px;
+    }
+  }
+
+  &__sort {
+    position: relative;
+    text-align: center;
+
+    &__box {
+      width: 200px;
+      // height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid $gray-light;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      @include mobile {
+        width: 100%;
+      }
+      span {
+        flex: 1;
+      }
+      i {
+        font-size: 2rem;
+      }
+    }
+    &__item {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      width: 100%;
+      border: 1px solid $gray-light;
+      border-radius: 6px;
+      overflow: hidden;
+      display: none;
+      transform: translateY(10px);
+      transition: 0.4s linear;
+      background-color: #fff;
+      z-index: 10;
+      &.active {
+        display: block;
+        transform: translateY(0);
+      }
+      li {
+        padding: 4px 12px;
+        cursor: pointer;
+        &:hover {
+          background-color: #dfdfdf;
+        }
+      }
+      li + li {
+        border-top: 1px solid #dfdfdf;
+      }
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include mobile {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    margin-left: -12px;
+    margin-top: 24px;
+    justify-content: center;
+    width: 100%;
+    li {
+      cursor: pointer;
+      margin-left: 12px;
+      &.active {
+        color: $main-color;
+      }
+    }
+    a {
+      $size: 30px;
+      display: inline-block;
+      width: $size;
+      height: $size;
+      box-shadow: $box-shadow;
+      text-align: center;
+      line-height: $size;
+      border-radius: 4px;
+    }
+  }
+
+  &__empty {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 32px;
+    h3 {
+      margin: 12px;
+      color: $gray-dark;
+    }
+    img {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+}

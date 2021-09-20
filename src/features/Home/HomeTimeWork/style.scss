@@ -1,0 +1,58 @@
+@import "../../../sass/abstracts/variables";
+@import "../../../sass/abstracts/mixin";
+.home-time {
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 64px;
+    margin-bottom: 64px;
+    margin-left: -32px;
+    padding: 0 12px;
+    @include tablet {
+      margin-left: -24px;
+    }
+    @include mobile {
+      margin-left: 0;
+    }
+  }
+  &__item {
+    $size: 32px;
+    width: 20%;
+    margin-left: 32px;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: $box-shadow;
+    padding: 24px 0;
+    border-top-right-radius: $size;
+    border-bottom-left-radius: $size;
+    @include pc {
+      width: 25%;
+    }
+    @include tablet {
+      width: 30%;
+      margin-left: 24px;
+    }
+    @include mobile {
+      width: 100%;
+      margin-left: 0;
+      & + & {
+        margin-top: 24px;
+      }
+    }
+  }
+  &__icon {
+    svg {
+      $size: 40px;
+      color: $main-color;
+      width: $size;
+      height: $size;
+    }
+  }
+  &__text {
+    h3 {
+      font-weight: 600;
+      padding: 8px 0;
+    }
+  }
+}

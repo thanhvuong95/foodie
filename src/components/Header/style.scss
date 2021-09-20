@@ -1,0 +1,260 @@
+@import "../../sass/abstracts/variables";
+@import "../../sass/abstracts/mixin";
+.header {
+  font-size: 1.75rem;
+  color: $gray-dark;
+  font-weight: 600;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.5s linear;
+  background-color: transparent;
+  z-index: 999;
+
+  &.shrink {
+    background-color: #000;
+    color: $white-color;
+  }
+
+  &__container {
+    display: flex;
+    height: $header-height;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+  }
+  &__menu {
+    display: none;
+    width: 30px;
+    cursor: pointer;
+    @include tablet {
+      display: block;
+    }
+  }
+  &__logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    svg {
+      max-height: $header-height;
+      height: 100%;
+      width: 50px;
+      color: $main-color;
+    }
+    span {
+      font-size: 2rem;
+    }
+  }
+  &__nav {
+    transition: 0.5s linear;
+    &.active {
+      transform: translateX(0);
+    }
+    @include tablet {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 50%;
+      box-shadow: $box-shadow;
+      z-index: 9999;
+      background-color: #fff;
+      color: $gray-dark;
+      transform: translateX(-100%);
+    }
+    @include mobile {
+      width: 100%;
+    }
+    &__list {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      @include tablet {
+        flex-direction: column;
+        padding: 32px 0;
+      }
+    }
+    &__item {
+      cursor: pointer;
+      padding: 12px 0;
+      text-align: left;
+      &:hover {
+        color: $main-color;
+      }
+      &.active {
+        color: $main-color;
+      }
+      &--mobile {
+        display: none;
+        text-align: center;
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        span {
+          text-decoration: underline;
+          display: block;
+          font-weight: 300;
+        }
+        i {
+          font-size: 2.5rem;
+        }
+        @include tablet {
+          display: block;
+        }
+      }
+    }
+    &__item + &__item {
+      margin-left: 32px;
+      @include tablet {
+        margin: 0;
+      }
+    }
+    &__close {
+      display: none;
+      cursor: pointer;
+      @include tablet {
+        display: block;
+        position: fixed;
+        top: 12px;
+        left: 12px;
+        width: 30px;
+        z-index: 99999;
+        color: $gray-dark;
+      }
+    }
+  }
+
+  &__action {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    &__bag {
+      position: relative;
+      cursor: pointer;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      margin: 0 12px;
+    }
+    &__number {
+      $size: 30px;
+      background-color: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(2px);
+      color: $main-color;
+      box-shadow: $box-shadow;
+      width: $size;
+      height: $size;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 5px;
+      right: -16px;
+    }
+    svg {
+      max-height: 30px;
+      height: 100%;
+      width: 30px;
+    }
+    &__user {
+      margin-left: 12px;
+      position: relative;
+      @include tablet {
+        display: none;
+      }
+
+      &::before {
+        display: none;
+        content: "";
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 220px;
+        height: 16px;
+      }
+    }
+    &__user:hover &__menu,
+    &__user:hover &__arrow,
+    &__user:hover::before {
+      display: block;
+    }
+    &__img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      img {
+        width: 100%;
+      }
+      i {
+        font-size: 2.5rem;
+      }
+    }
+    &__menu {
+      position: absolute;
+      font-size: 1.5rem;
+      color: $gray-light;
+      top: calc(100% + 16px);
+      right: 0;
+      width: 220px;
+      background-color: #fff;
+      border-radius: 4px;
+      overflow: hidden;
+      display: none;
+      box-shadow: $box-shadow;
+
+      li {
+        padding: 6px 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        i {
+          font-size: 2rem;
+          margin-right: 8px;
+        }
+        &:hover {
+          background-color: #dfdfdf;
+          color: $main-color;
+        }
+      }
+    }
+    &__arrow {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 4px;
+      border: 8px solid;
+      border-color: transparent transparent #fff transparent;
+    }
+  }
+  &__overlay {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    &.active {
+      display: block;
+      animation: fadeIn 0.5s linear forwards;
+    }
+  }
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

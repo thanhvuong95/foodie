@@ -1,0 +1,65 @@
+@import "../../../sass/abstracts/variables";
+@import "../../../sass/abstracts/mixin";
+.order-filter {
+  width: 250px;
+  font-size: 1.5rem;
+  padding: 24px 12px;
+  @include tablet {
+    display: none;
+  }
+
+  &__item {
+    margin-bottom: 32px;
+  }
+  h3 {
+    color: $gray-dark;
+    margin-bottom: 12px;
+  }
+
+  &__search {
+    input {
+      padding: 10px 16px;
+      display: block;
+      border-radius: 12px;
+      border: none;
+      outline: none;
+      width: 100%;
+      background-color: #dfdfdf;
+    }
+  }
+
+  &__categories {
+    li {
+      cursor: pointer;
+      padding: 4px 12px;
+      transition: 0.3s linear;
+      &:hover {
+        color: $main-color;
+        transform: translateX(5px);
+      }
+      &.active {
+        color: $main-color;
+      }
+    }
+  }
+
+  // custom input range price
+  .input-range__label--max,
+  .input-range__label--min {
+    display: none;
+  }
+  .input-range__label-container {
+    bottom: -25px;
+    font-size: 1.5rem;
+    color: $gray-dark;
+  }
+  .input-range {
+    margin: 0 12px;
+    width: auto;
+  }
+  .input-range__track--active,
+  .input-range__slider {
+    background-color: $main-color;
+    border: none;
+  }
+}

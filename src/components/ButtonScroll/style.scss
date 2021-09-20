@@ -1,0 +1,32 @@
+@import "../../sass/abstracts/variables";
+.scroll-top {
+  $size: 40px;
+  width: $size;
+  height: $size;
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: $box-shadow;
+  // display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  transform: translateY(calc(100% + 25px));
+  transition: all 0.3s linear;
+  cursor: pointer;
+  i {
+    font-size: 2.5rem;
+    color: $main-color;
+  }
+  &:hover {
+    background-color: $main-color;
+  }
+  &:hover i {
+    color: #fff;
+  }
+  &.active {
+    transform: translateY(0);
+  }
+}

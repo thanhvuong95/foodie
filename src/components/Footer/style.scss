@@ -1,0 +1,96 @@
+@import "../../sass/abstracts/variables";
+@import "../../sass/abstracts/mixin";
+.footer {
+  font-size: 1.5rem;
+  color: $gray-light;
+  box-shadow: $box-shadow;
+  &__container {
+    display: flex;
+    padding: 32px 12px;
+    @include tablet {
+      flex-direction: column;
+    }
+  }
+  &__right {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    @include tablet {
+      width: 100%;
+    }
+    span {
+      color: $gray-dark;
+      font-weight: 500;
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+    li {
+      padding: 8px 0;
+      cursor: pointer;
+      transition: 0.3s linear;
+      &:hover {
+        color: $main-color;
+        transform: translateX(4px);
+      }
+    }
+  }
+  &__left {
+    width: 40%;
+    margin-right: 64px;
+    @include tablet {
+      width: 100%;
+      margin-bottom: 24px;
+    }
+    & > span {
+      display: inline-block;
+      margin: 12px 0;
+      line-height: 3rem;
+      text-align: justify;
+    }
+  }
+  &__logo {
+    display: flex;
+    align-items: center;
+    svg {
+      max-height: $header-height;
+      height: 100%;
+      width: 50px;
+      color: $main-color;
+    }
+    span {
+      font-size: 2rem;
+      font-weight: 500;
+      color: $gray-dark;
+    }
+  }
+  &__socials {
+    i {
+      font-size: 3rem;
+      margin-right: 24px;
+      cursor: pointer;
+      transition: all 0.4s linear;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+    i.facebook {
+      color: #4267b2;
+    }
+    i.twitter {
+      color: #1da1f2;
+    }
+    i.instagram {
+      color: #ff0000;
+    }
+    i.youtube {
+      color: #ff0000;
+    }
+  }
+  &__item {
+    @include mobile {
+      width: 50%;
+      margin-top: 24px;
+    }
+  }
+}
