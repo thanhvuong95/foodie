@@ -9,11 +9,13 @@ import {useDispatch, useSelector} from 'react-redux'
 import { login } from '../Login/userSlice'
 import { updateCart } from '../Order/cartSlice'
 import {selectUser} from '../../features/Login/userSlice'
-import { getDataFromFirebase, updateFirebaseWithDataLocal } from '../../utils/firebaseStore/firebaseStore'
+import { getDataFromFirebase, updateFirebaseWithDataLocal, getFavoriteDataById } from '../../utils/firebaseStore/firebaseStore'
+import { addToFavorite, selectFavorite } from '../../components/CardItem/favouriteSlice'
 const Layout = () => {
-    const dispatch = useDispatch()
     const user = useSelector(selectUser)
+    const favorite = useSelector(selectFavorite)
 
+    const dispatch = useDispatch()
     const getCart = useCallback(() => {
         const oldCart = localStorage.getItem('cart')
         if(!user) {
@@ -67,6 +69,21 @@ const Layout = () => {
             getCart()
         }
     }, [user, getCart, dispatch])
+
+    useEffect(() => {
+        if(user) {
+            getFavoriteDataById(user.uid)
+            .then(({data}) => {
+                dispatch(addToFavorite(data))
+            })
+            .catch(error => {
+            })
+        }
+        else {
+            dispatch(addToFavorite([]))
+
+        }
+    }, [user, dispatch])
     return (
         <BrowserRouter>
             <Suspense fallback = {<Loading />}>

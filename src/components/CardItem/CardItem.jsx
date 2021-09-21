@@ -12,10 +12,12 @@ import ReactStars from "react-rating-stars-component"
 import {Star28Filled} from '@ricons/fluent'
 import './style.scss'
 import { addToFirebase } from '../../utils/firebaseStore/firebaseStore';
-const CardItem = ({data}) => {
+import { toggleFavorite } from '../../utils/firebaseStore/firebaseStore';
+import { addToFavorite, selectFavorite } from './favouriteSlice';
+const CardItem = ({data, isFavorite}) => {
     const user = useSelector(selectUser)
+    const favorite = useSelector(selectFavorite)
     const dispatch = useDispatch()
-
     const handleAddToCart = async(item) => {
         if(!user) {
             dispatch(addToCart(item))
@@ -24,15 +26,38 @@ const CardItem = ({data}) => {
         }
         else {
             try {
+                
                 await addToFirebase(user.uid, item)
                 dispatch(addToCart(item))
                 ToastMessage(toasts(SUCCESS, 'Added to cart successfully.'))
             }
-            catch(e) {
-                ToastMessage(toasts(ERROR, 'Added to cart failed'))
+            catch(e) {             
+                ToastMessage(toasts(ERROR, 'Added to cart failed.'))
             }
         }
     }
+
+    const handleAddFavorite = async(item) => {
+        if(!user) {
+            ToastMessage(toasts('INFORMATION', 'This feature require login.'))
+        }
+        else {
+            try {
+                const {data} = await toggleFavorite(user.uid, item)
+                dispatch(addToFavorite(data))
+                if(favorite.findIndex(el => el.id === item.id) === -1) {
+                    ToastMessage(toasts(SUCCESS, 'Added to favorite successfully. '))
+                }
+                else {
+                    ToastMessage(toasts(SUCCESS, 'Removed from favorite successfully. '))
+                }
+            }
+            catch(error) {
+                ToastMessage(toasts(ERROR, 'Added to favorite failed.'))
+            }
+        }
+    }
+
 
     return (
         <div className = 'card-item'>          
@@ -66,7 +91,7 @@ const CardItem = ({data}) => {
                 </div>
             </div>
             <div className="card-item__actions">
-                <div className="card-item__action">
+                <div className={`card-item__action ${isFavorite && 'active'}`} onClick = {() => handleAddFavorite(data)} >
                     <i className='bx bx-heart'></i>
                 </div>
                 <div className="card-item__action" onClick = {() => handleAddToCart(data)}>

@@ -51,9 +51,15 @@
       }
       &:last-child {
         position: absolute;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
         right: 0;
-        padding: 0 12px;
-        bottom: 0px;
+        bottom: 20px;
+        border-radius: 50%;
+        transform: translateY(50%);
+        background-color: #dfdfdf;
       }
     }
   }

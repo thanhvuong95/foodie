@@ -15,6 +15,7 @@ import '../style.scss'
 const CheckoutContent = () => {
     const [showDialog, setShowDialog] = useState(false)
     const [typeDialog, setTypeDialog] = useState(null)
+    const [isSuccess, setIsSuccess] = useState(false)
 
     const user = useSelector(selectUser)
     const dispatch = useDispatch()
@@ -37,6 +38,7 @@ const CheckoutContent = () => {
             dispatch(removeAll())
             setTypeDialog('success')
             setShowDialog(true)
+            setIsSuccess(true)
         }
     }
 
@@ -45,8 +47,8 @@ const CheckoutContent = () => {
                  <h2>Checkout</h2>
                 <ul className="checkout__steps">
                     <li className ="active">Login</li>
-                    <li>Information</li>
-                    <li>Payment</li>
+                    <li className = {isSuccess && 'active'}>Information</li>
+                    <li className = {isSuccess && 'active'}>Payment</li>
                 </ul>
                 <div className="checkout__content">
                     <div className="checkout__cart">

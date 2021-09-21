@@ -13,6 +13,7 @@ const Login = () => {
   useEffect(() => {
     if(user) history.push('/')
   },[user, history])
+  
   return (
     <div className="login">
       <div className= "login__container">

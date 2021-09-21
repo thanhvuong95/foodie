@@ -17,7 +17,7 @@ const toasts = (type, message) => {
             return {
                 type,
                 desc: message,
-                toastType:toast.TYPE.INFO
+                toastType:toast.TYPE.WARNING
             }
     }
 }

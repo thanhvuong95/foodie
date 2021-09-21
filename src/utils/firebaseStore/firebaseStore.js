@@ -1,5 +1,6 @@
 import {db} from '../../firebase/firebaseConfig'
 import { doc, setDoc, getDoc,  deleteDoc } from "firebase/firestore";
+
 export const addToFirebase = async(uid, item) => {
         const docSnap = await getDoc(doc(db, "foodie", uid))
         if (docSnap.exists()) {
@@ -81,4 +82,36 @@ export const updateDataFirebase = async(uid, id, type) => {
 }
 export const removeDataFirebaseById = async(uid) => {
     await deleteDoc(doc(db, "foodie", uid));
+}
+// FAVORITE
+export const getFavoriteDataById = async(uid) => {
+    const docSnap = await getDoc(doc(db, "favorite", uid))
+    if (docSnap.exists()) {
+        return docSnap.data() 
+   }
+   else {
+       return null
+   }
+
+}
+export const toggleFavorite = async(uid, data) => {
+    const storedData = await getFavoriteDataById(uid)
+    if(storedData) {
+        const index = storedData.data.findIndex(item => item.id === data.id)
+        if(index === -1) {
+            storedData.data.push(data)
+            await setDoc(doc(db, "favorite", uid), storedData);
+           
+        }
+        else {
+            const newData = storedData.data.filter(item => item.id !== data.id)
+            console.log(newData);
+            await setDoc(doc(db, "favorite", uid), {data:newData});
+        }
+    }
+    else {
+        await setDoc(doc(db, "favorite", uid), {data:[data]});
+    }
+    return await getFavoriteDataById(uid)
+    
 }

@@ -1,5 +1,5 @@
 .toast {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   &__title {
     font-weight: 700;
     margin-bottom: 6px;
@@ -16,6 +16,14 @@
 }
 .Toastify__toast--error {
   background-color: #e74c3c !important;
+  color: #fff !important;
+  svg {
+    color: #fff !important;
+    fill: #fff;
+  }
+}
+.Toastify__toast--warning {
+  background-color: #f1c40f !important;
   color: #fff !important;
   svg {
     color: #fff !important;

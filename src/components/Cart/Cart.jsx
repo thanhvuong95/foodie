@@ -8,6 +8,7 @@ import './style.scss'
 import { updateCartLocal, removeCartLocalById } from '../../utils/localStorage/cartGuest'
 import { updateDataFirebase } from '../../utils/firebaseStore/firebaseStore'
 import Dialog from '../Dialog/Dialog'
+
 const Cart = ({onShow, onClose}) => {
     const user = useSelector(selectUser)
     const cart = useSelector(selectCart)
@@ -15,10 +16,12 @@ const Cart = ({onShow, onClose}) => {
     const history = useHistory()
     const isDisable = cart.data.length ? false : true
     const [showDialog, setShowDialog] = useState(false)
+
     const handleBuyMore = () => {
         history.push('/product')
         onClose(false)
     }
+
     const handleCheckout = () => {
        if(!user) {
             onClose(false)
@@ -29,6 +32,7 @@ const Cart = ({onShow, onClose}) => {
            history.push('/checkout')
        }
     }
+
     return (
         <>
             <div className={`cart__overlay ${onShow && 'active'}`} onClick= {() => onClose(false)}></div>

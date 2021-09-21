@@ -4,7 +4,7 @@ const ToastMessage = (params) => {
     const {type, desc, toastType} = params
     const options  =  {
         position: "top-right",
-        autoClose: 1000,
+        autoClose: 2500,
         hideProgressBar: true,
         type:toastType
     }

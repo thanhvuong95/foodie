@@ -6,8 +6,8 @@ import { useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup'
 import auth, {googleProvider, facebookProvider} from '../../../firebase/firebaseConfig'
 import { signInWithRedirect, signInWithEmailAndPassword } from 'firebase/auth'
-import {useSelector, useDispatch} from 'react-redux'
-import { selectUser, login } from '../userSlice'
+import {useDispatch} from 'react-redux'
+import { login } from '../userSlice'
 
 import '../style.scss'
 
@@ -16,7 +16,6 @@ const SignIn = ({onToggle, isReset}) => {
   const [error, setError] = useState(null)
 
   const history = useHistory()
-  const user = useSelector(selectUser)
   const dispatch = useDispatch()
 
   const { register, handleSubmit, reset, formState:{ errors } } = useForm({
@@ -53,7 +52,7 @@ const SignIn = ({onToggle, isReset}) => {
         dispatch(login({uid, displayName, email, photoURL}))
         history.push('/')
       }).catch((error) => {
-
+        setError('Oops! Some thing went wrong. Please try another account.');
       });
   }
 // reset value & error when switch form

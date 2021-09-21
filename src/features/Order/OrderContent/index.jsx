@@ -3,10 +3,12 @@ import sortItem from '../../../utils/static-data/sortItem'
 import CardItem from '../../../components/CardItem/CardItem'
 import { OrderContext } from '../../../context/orderContext'
 import Loading from '../../../components/Loading/Loading'
+import {useSelector} from 'react-redux'
 import Slider from "react-slick"
 import ReactPaginate from 'react-paginate'
 import emptyImg from '../../../assets/svg/no-data.svg'
 import categories from '../../../utils/static-data/categories'
+import { selectFavorite } from '../../../components/CardItem/favouriteSlice'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import './style.scss'
@@ -16,7 +18,7 @@ const OrderContent = () => {
     const [selected,setSelected]  = useState('Default')
     const sortRef = useRef(null)
     const inputRef = useRef(null)
-
+    const favorite = useSelector(selectFavorite)
     const settings = {
         dots: false,
         infinite: false,
@@ -74,8 +76,13 @@ const OrderContent = () => {
             <div className="order-content__items">
             {
                 data.map((item,index) => (
-                    <CardItem key = {index} data = {item} />
-                ))
+                    favorite.findIndex(el => el.id === item.id) === -1 
+                    ?
+                    <CardItem key = {index} data = {item} isFavorite = {false}/>
+                    :
+                    <CardItem key = {index} data = {item} isFavorite = {true} />
+                )
+                )
             }
             </div> 
             {totalPage > 1 && <ReactPaginate
