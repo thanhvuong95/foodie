@@ -11,7 +11,9 @@ import './style.scss'
 const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 2000,
+    autoplay: true,
+    autoplaySpeed: 5000,
     slidesToShow: 1,
     slidesToScroll: 1
   };
@@ -27,7 +29,7 @@ const HomeReview = () => {
             <div className="container">
                 <span data-aos = "fade-right">Testimonial</span>
                 <h2 data-aos = "fade-left">What they are saying</h2>
-                <p data-aos = "fade-up" data-aos-delay ="500">It's through mistake that actually can grow get rid of <br /> everything that is not essential to makihave to get bad.</p>
+                <p data-aos = "fade-up" data-aos-delay ="500">It's through mistake that actually can grow get rid of <br /> everything that is not essential to make have to get bad.</p>
                 <div className="home-review__slider" data-aos="zoom-in" data-aos-delay ="700">
                     <Slider {...settings}>
                         <div className="home-review__item">
@@ -54,7 +56,7 @@ const HomeReview = () => {
                                     <img src={image} alt="reviewer" />
                                 </div>
                                 <span>Kim Yoo Jung</span>
-                                <p>They are engaged communicators and dedicated problem-solvers regards less of time constraints. The team manageprojet them.</p>
+                                <p>They are engaged communicators and dedicated problem-solvers regards less of time constraints. The team manage project them.</p>
                                 <ReactStars
                                     classNames = "home-review__star"
                                     edit = {false}

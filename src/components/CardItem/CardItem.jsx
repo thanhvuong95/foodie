@@ -8,6 +8,8 @@ import ToastMessage from '../ToastMessage/ToastMessage';
 import toasts, {SUCCESS,ERROR} from '../../utils/static-data/toast';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import {addCartLocal} from '../../utils/localStorage/cartGuest';
+import ReactStars from "react-rating-stars-component"
+import {Star28Filled} from '@ricons/fluent'
 import './style.scss'
 import { addToFirebase } from '../../utils/firebaseStore/firebaseStore';
 const CardItem = ({data}) => {
@@ -46,6 +48,15 @@ const CardItem = ({data}) => {
                     <h4 className = "card-item__top__name">{data.name}</h4>
                     <span className = "card-item__top__description" >{data.dsc}</span>
                 </div>
+                <ReactStars
+                    classNames = "cart-item__star"
+                    edit = {false}
+                    count={5}
+                    size={24}
+                    value = {data.rate}
+                    activeColor="#ffd700"
+                    fullIcon={<Star28Filled />}
+                 />
                 <div className="card-item__bottom">
                     <div className="card-item__bottom__country">
                         <PlaceFilled />

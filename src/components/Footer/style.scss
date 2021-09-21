@@ -47,6 +47,9 @@
       margin: 12px 0;
       line-height: 3rem;
       text-align: justify;
+      @include tablet {
+        line-height: 4rem;
+      }
     }
   }
   &__logo {

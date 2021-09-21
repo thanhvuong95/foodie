@@ -65,6 +65,7 @@
     display: none;
     border-radius: 6px;
     border: 1px solid #717171;
+
     @include tablet {
       display: flex;
       align-items: center;
@@ -84,6 +85,9 @@
       background-color: transparent;
       padding: 0 12px;
       flex: 1;
+      &::placeholder {
+        text-align: center;
+      }
     }
     i {
       font-size: 2rem;
@@ -195,4 +199,5 @@
       max-width: 300px;
     }
   }
+
 }

@@ -29,16 +29,31 @@
   }
 
   &__categories {
+    ul {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.3s linear;
+      &.active {
+        height: 560px;
+      }
+    }
     li {
       cursor: pointer;
-      padding: 4px 12px;
+      height: 40px;
+      line-height: 40px;
       transition: 0.3s linear;
       &:hover {
         color: $main-color;
-        transform: translateX(5px);
       }
       &.active {
         color: $main-color;
+      }
+      &:last-child {
+        position: absolute;
+        right: 0;
+        padding: 0 12px;
+        bottom: 0px;
       }
     }
   }

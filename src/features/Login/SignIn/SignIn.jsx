@@ -5,7 +5,7 @@ import { schemaSignIn } from '../../../utils/validation/validate'
 import { useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup'
 import auth, {googleProvider, facebookProvider} from '../../../firebase/firebaseConfig'
-import { signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth'
+import { signInWithRedirect, signInWithEmailAndPassword } from 'firebase/auth'
 import {useSelector, useDispatch} from 'react-redux'
 import { selectUser, login } from '../userSlice'
 
@@ -47,7 +47,7 @@ const SignIn = ({onToggle, isReset}) => {
   }
 
   const handleLoginSocial = (provider) => {
-    signInWithPopup(auth, provider)
+    signInWithRedirect(auth, provider)
       .then((result) => {
         const {uid, displayName, email, photoURL} = result.user;
         dispatch(login({uid, displayName, email, photoURL}))

@@ -11,7 +11,7 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import './style.scss'
 const OrderContent = () => {
-    const {isLoading, totalPage, currentPage, type, changeType, changeOptions, data} = useContext(OrderContext)
+    const {isLoading, totalPage, currentPage, type, changeType, changeOptions, data } = useContext(OrderContext)
     const [isSort, setIsSort] = useState(false)
     const [selected,setSelected]  = useState('Default')
     const sortRef = useRef(null)
@@ -56,13 +56,6 @@ const OrderContent = () => {
         changeOptions({q:inputRef.current.value})
     },[changeOptions])
 
-    useEffect (()=> {
-        setSelected('Default')
-    },[type])
-    useEffect(() => {
-        window.addEventListener('click', handleCloseSort)
-        return () => window.removeEventListener('click', handleCloseSort )
-    },[])
     let content
     if(isLoading) {
        content = <Loading />
@@ -102,6 +95,15 @@ const OrderContent = () => {
         )
     }
 
+    useEffect (()=> {
+        setSelected('Default')
+    },[type])
+
+    useEffect(() => {
+        window.addEventListener('click', handleCloseSort)
+        return () => window.removeEventListener('click', handleCloseSort )
+    },[])
+
     useEffect(() => {
         inputRef.current.addEventListener('keyup', (e) => {
             if(e.key === 'Enter' || e.keyCode === 13) {
@@ -114,10 +116,11 @@ const OrderContent = () => {
         <div className = 'order-content'>
             <div className="order-content__top">
                 <h2>Featured Products / {type === 'our-foods' ? 'All Products' : type}</h2>
+               
                 <div className="order-content__wrapper">
                     {/* search input on mobile & tablet */}
                     <div className="order-content__search">
-                        <input type="text" placeholder = "Search" ref = {inputRef} />
+                        <input type="text" placeholder = "Search..." ref = {inputRef} />
                         <i className='bx bx-search' onClick = {handleSearch}></i>
                     </div>
                     {/* end search input on mobile & tablet*/}
@@ -141,6 +144,7 @@ const OrderContent = () => {
                     </div>
                 </div>                 
             </div>
+
             {/* slider menu on tablet & mobile */}
             <div className="order-content__slider">
                 <Slider {...settings}>

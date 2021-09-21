@@ -9,6 +9,7 @@ import './style.scss'
 const OrderFilter = () => {
     const {changeOptions, changeType, type} = useContext(OrderContext)
     const [rate, setRate] = useState(0)
+    const [showMore, setShowMore] = useState(false)
     const [price, setPrice] = useState({
         data: {
             min: 0,
@@ -63,7 +64,7 @@ const OrderFilter = () => {
 
                 <div className="order-filter__item order-filter__categories">
                     <h3>Categories</h3>
-                    <ul>
+                    <ul className = {`${showMore && 'active'}`}>
                         {
                             categories.map((item, index) => (
                                 <li 
@@ -75,6 +76,7 @@ const OrderFilter = () => {
                                 </li>
                             ))
                         }
+                        <li onClick = {() => setShowMore(!showMore)}>{showMore ? '-' : '+'}</li>
                     </ul>
                 </div>
 
@@ -83,7 +85,7 @@ const OrderFilter = () => {
                     <InputRange
                         maxValue={500}
                         minValue={0}
-                        step = {50}
+                        step = {100}
                         onChange={handleChangePrice}
                         value={price.data} 
                     />

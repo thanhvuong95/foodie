@@ -32,12 +32,12 @@ const HomeAbout = () => {
                         </span>
                         <div className="home-about__button">
                             <button className="btn btn--large btn--primary btn--rounded-xl" data-aos = "fade-up" data-aos-delay="800">Learn more</button>
-                            <div className="btn__watch" data-aos = "fade-up" data-aos-delay="800">
+                            <a href = 'https://www.youtube.com/watch?v=f5hbmw7Ba7c' target ='_blank' rel="noreferrer" className="btn__watch" data-aos = "fade-up" data-aos-delay="800">
                                 <span>
                                     <i className='bx bx-play'></i>
                                 </span>
                                 Watch now
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>

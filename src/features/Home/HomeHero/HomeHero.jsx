@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
 import {ArrowRight16Regular} from "@ricons/fluent"
 import Aos from 'aos'
+import {useHistory} from 'react-router-dom'
 import bgHero from '../../../assets/images/hero.jpg'
 import 'aos/dist/aos.css'
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import './style.scss'
 const HomeHero = () => { 
+    const history = useHistory()
     useEffect(() => {
         Aos.init({
             duration:1500,
@@ -24,9 +26,9 @@ const HomeHero = () => {
             <div className="home-hero__content">
                 <div className="container">
                     <div className="home-hero__content__wrapper">
-                        <h1 data-aos="fade-right" className="home-hero__heading">Your favourite food delivered hot &  fresh</h1>
-                        <span data-aos="fade-left" data-aos-delay="500"  className="home-hero__description">Healthy switcher chef do all the prep work, like peeding, chopping & marinating, so you can cook a fresh food </span>
-                        <button data-aos="fade-up" data-aos-delay="1000" className="btn btn__order btn--primary btn--large btn--rounded-xl">
+                        <h1 data-aos="fade-right" className="home-hero__heading">Your favorite food delivered hot &  fresh</h1>
+                        <span data-aos="fade-left" data-aos-delay="500"  className="home-hero__description">Healthy switcher chef do all the prep work, like feeding, chopping & marinating, so you can cook a fresh food </span>
+                        <button data-aos="fade-up" data-aos-delay="1000" className="btn btn__order btn--primary btn--large btn--rounded-xl" onClick = {() => history.push('/product')}>
                             <span>Order now</span>
                             <ArrowRight16Regular />
                         </button>
